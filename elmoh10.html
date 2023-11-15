@@ -191,6 +191,183 @@ li.dropdown {
       cursor: pointer;
     }
 
+    #cubalance {
+            position: absolute;
+            top: 2px;
+    }
+
+    #reset1 {
+            position: relative;
+            top: 319px;
+            height: 57px;
+            width: 108px;
+            left: 125px;
+            font-size: 18px;
+            background-color: rgb(116, 26, 23);
+            color: #fff;
+            font-weight: bold;
+    }
+
+    #divv {
+            position: relative;
+            left: 224px;
+            height: 382px;
+            width: 600px;
+            text-align: center;
+            border-radius: 10px;
+            background-color: #4CAF50;
+            font-size: 20px;
+    }
+
+    .selectt {
+            height: 40px;
+            font-size: 18px;
+            width: 300px;
+            border-radius: 7px;
+            text-align: center;
+            position: relative;
+            left: -63px;
+            background-color: #fff;
+            color: #cf0000;
+            font-weight: bolder;
+
+    }
+
+    option:hover {
+            background-color: #333;
+    }
+
+
+    .selectt option {
+            background-color: #f1f1f1;
+            color: #333;
+    }
+
+    .selectt option:checked {
+            background-color: #000000;
+            color: #fff;
+            font-size: 25px;
+    }
+
+    .selectt option {
+            line-height: 20px;
+            font-size: 18px;
+    }
+
+    select option {
+
+            width: 200px;
+            height: 25px;
+            padding: 3px;
+            margin: 3px;
+            border-radius: 10px;
+            text-align: center;
+    }
+
+    .ino {
+            height: 40px;
+            width: 98px;
+            text-align: center;
+    }
+
+    #balance {
+            position: relative;
+            left: -242px;
+            bottom: 54px;
+            height: 53px;
+            font-size: 17px;
+            border-radius: 10px;
+    }
+
+    #priceWithTax,
+    #priceWithoutTax {
+            position: relative;
+            left: 167px;
+            bottom: 111px;
+            height: 50px;
+            width: 118px;
+            font-size: 18px;
+            border-radius: 10px;
+
+    }
+
+    #divvv {
+            height: 200px;
+            width: 258px;
+            background-color: antiquewhite;
+            padding: 10px;
+            margin: 10px;
+            text-align: center;
+            font-size: 18px;
+
+    }
+
+    #nom1,
+    #nom2 {
+            height: 30px;
+            width: 239px;
+            text-align: center;
+            font-size: 18px;
+    }
+
+    #nom2 {
+            position: relative;
+            top: 48px;
+            height: 33px;
+            width: 236px;
+
+    }
+
+    #withoutvat {
+                    position: relative;
+                    top: -354px;
+                    left: 862px;
+                    width: 250px;
+                    height: 300px;
+                    background-color: coral;
+                    text-align: center;
+            }
+
+            #Buto {
+                    position: absolute;
+                    left: 4px;
+                    padding: 2px;
+                    margin: 5px;
+                    top: 156px;
+                    font-size: 24px;
+                    width: 231px;
+                    height: 40px;
+                    background-color: royalblue;
+                    color: white;
+                    text-align: center;
+                    border-radius: 5px;
+            }
+
+            #Hhhh {
+                    position: relative;
+                    top: -26px;
+                    font-size: 22px;
+                    left: 1px;
+                    color: white;
+
+            }
+
+            #Poll {
+                    font-size: 19px;
+                    position: relative;
+                    top: -26px;
+                    text-align: center;
+                    color: white;
+            }
+
+            #Poll1 {
+                    font-size: 19px;
+                    position: relative;
+                    top: 53px;
+                    text-align: center;
+                    color: white;
+            }
+
 .dropdown-content a:hover {background-color: #ddd;}
 
 .dropdown:hover .dropdown-content {display: block;}
@@ -201,7 +378,7 @@ li.dropdown {
 
 </style>
 </head>
-<body background="2.jpg">
+<body background="c:\Users\Etch\Downloads\New folder\New folder\2.jpg">
 
 
   <label for="landlineNumber"></label>
@@ -238,6 +415,8 @@ li.dropdown {
     <button class="tablinks" onclick="openCity(event, 'FTTH')">FTTH</button>
     <button class="tablinks" onclick="openCity(event, 'CPE')">CPE</button>
     <button class="tablinks" onclick="openCity(event, 'Tools')">Tools</button>
+    <button class="tablinks" onclick="openCity(event, 'Package Price')">Package Price</button>
+
   </div>
 
 <div id="Technical" class="tabcontent">
@@ -426,6 +605,385 @@ li.dropdown {
   
   <font color="#00FF00" size="3">Show Password</font>
   <input type="checkbox" onclick="myFunction()">
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js">
+  function clearForm() {
+          window.location.href = window.location.pathname;
+
+  }
+</script>
+
+<br>
+<br>
+<form>
+<table>
+  <tbody><tr>
+          <td style="color: white;">
+                  <p>
+                          <label for="pkgs">Quota
+                                  (GB)</label>
+                          <select id="pkgs">
+                                  <option id="0" value="0">
+                                          Please
+                                          Select
+                                  </option>
+                                  <option id="1">
+                                          140
+                                  </option>
+                                  <option id="2">
+                                          250
+                                  </option>
+                                  <option id="3">
+                                          600
+                                  </option>
+                                  <option id="3">
+                                          200
+                                  </option>
+                                  <option id="3">
+                                          100
+                                  </option>
+                                  <option id="3">
+                                          50
+                                  </option>
+                                  <option id="3">
+                                          20
+                                  </option>
+
+                                  <option id="9">
+                                          other
+                                  </option>
+                          </select>
+                  </p>
+          </td>
+          <td style="color: white;">
+                  <p id="others">
+                          <label for"other_pkg"=""></label>
+                          <input type="text" id="other_pkg" style="display: none;">
+                  </p>
+          </td>
+  </tr>
+</tbody></table>
+<br>
+<table>
+  <tbody><tr>
+          <td id="real" ;="" style="color: white;">
+                  <label for="bss_pkg" style="font-style:bold;">
+                          BSS Remaining
+                          Quota</label>
+
+                  <input type="text" id="bss_pkg">
+          </td>
+  </tr>
+</tbody></table>
+<br>
+<h4 id="error" align="center" style="color: white; display: none;">
+</h4>
+<table id="results">
+  <tbody><tr>
+
+          <td style="color: white;">
+                  الباقه الاساسيه (GB) :
+          </td>
+          <td style="color: white;">
+                  <label id="pq" style="color: rgb(208, 250, 88);"></label>
+          </td>
+  </tr>
+  <tr>
+          <td style="color: white;">
+                  المتبقى (GB) :
+          </td>
+          <td style="color: white;">
+                  <label id="rq" style="color: rgb(208, 250, 88);"></label>
+          </td>
+  </tr>
+  <tr>
+          <td style="color: white;">
+                  الاستهلاك (GB) :
+          </td>
+          <td style="color: white;">
+                  <label id="cq" style="color: rgb(208, 250, 88);"></label>
+          </td>
+  </tr>
+  <tr>
+          <td style="color: white;">
+                  حاله الباقه :
+
+          </td>
+
+          <td>
+
+
+                  <label id="dstatus" style="font-weight: bold; color: rgb(208, 250, 88);"></label>
+          </td>
+  </tr>
+
+</tbody></table>
+
+
+<input type="reset" value="reset" id="bss_pkg">
+
+<script type="text/javascript">
+  //variables
+  var pkg = 0;
+  var cp = 0;
+  var rq = 0;
+
+
+
+  function clearall() {
+
+          $("#pq,#cq,#rq,#dstatus,#other_pkg").html('');
+          $("#error").hide();
+  }
+
+
+
+  function calculate(now, config) {
+
+
+          var pq = (config);
+          var rq = (((now / 1024) / 1024) / 1024);
+          rq = (Number(Math.round(parseFloat(rq + 'e' + 2)) + 'e-' + 2));
+
+          $("#pq").html(pq).css("color", "#D0FA58");
+          $("#rq").html(rq).css("color", "#D0FA58");
+
+          (rq > pq) ? $("#cq").html("0") : $("#cq").html(pq - rq).css("color", "#D0FA58");
+
+          if (now != 0) {
+                  if (rq == 0) {
+                          $("#dstatus").html("الباقة خلصت وقف هنا ").css("color", "D0FA58");
+                  } else {
+                          $("#dstatus").html("الباقه مخلصتش يوووه ").css("color", "#D0FA58");
+                  }
+          } else {
+                  $("#dstatus").html("").css("color", "#D0FA58");
+          }
+  }
+
+
+  function isnum(x) {
+          var num = true;
+          for (var i = 0; i < x.length; i++) {
+                  var number = (x[i]);
+
+                  if (isNaN(number) || number < 0)
+                          num = false
+          }
+          return num;
+  }
+
+
+
+  $(document).ready(function () {
+
+          // Hiding 
+
+          $("#other_pkg,#error").hide();
+
+
+          $("#pkgs").change(function () {
+
+                  $("#bss_pkg").val("");
+
+                  var selected = $("#pkgs option:selected").text().trim();
+
+                  console.log(selected)
+
+                  if (selected.toLowerCase() == "other") {
+                          clearall();
+
+                          $("#other_pkg").show();
+
+                  } else if (selected.toLowerCase() == "please select") {
+                          $("#other_pkg").hide();
+
+                          clearall();
+
+                          pkg = 0;
+                          cp = 0;
+                          rq = 0;
+                  } else {
+                          $("#other_pkg").hide();
+
+                          clearall();
+
+                          pkg = selected;
+
+                          var pq = pkg
+
+                          $("#pq").html(pq);
+
+
+
+                  }
+          });
+
+  });
+
+  $("#other_pkg").bind("input", function () {
+
+          clearall();
+
+          pkg = $("#other_pkg").val().trim();
+
+          $("#pq").html(pkg);
+
+          $("#bss_pkg").val("");
+
+  })
+
+
+
+  $("#bss_pkg").bind("input change", function () {
+
+          if ($(this).val().trim() != "") {
+
+                  var curr_real = $("#bss_pkg").val().trim();
+                  var arr = [curr_real];
+
+                  if (pkg > 0 && isnum([pkg])) {
+
+                          if (isnum(arr)) {
+                                  $("#error").hide();
+
+                                  calculate(curr_real, pkg);
+
+                          } else if (curr_real != '') {
+                                  $("#error").html("Please Enter valid number").show();
+                                  $("#rq,#dstatus").html('');
+                          }
+
+                  } else {
+                          $("#error").html("Please Define CST Quota").show();
+                  }
+
+          } else {
+                  clearall();
+          }
+
+  });
+</script>
+</form>
+</div>
+<br>
+<br>
+
+<div id="Package Price" class="tabcontent" >
+
+
+  <div id="divv" onclick="calculatePrice()">
+
+  <button id="reset1" type="reset" onclick="remove()">Reset</button>
+
+  <select id="products" class="selectt" onclick="calculatePrice()">
+          <option value="0" onclick="calculatePrice()">Select Package
+          </option>
+          <option value="120" onclick="calculatePrice()">Super 140
+          </option>
+          <option value="170" onclick="calculatePrice()">Super 200
+          </option>
+          <option value="210" onclick="calculatePrice()">Super 250
+          </option>
+          <option value="340" onclick="calculatePrice()">Super 400
+          </option>
+          <option value="500" onclick="calculatePrice()">Super 600
+          </option>
+          <option value="220" onclick="calculatePrice()">Mega 140</option>
+          <option value="310" onclick="calculatePrice()">Mega 250</option>
+          <option value="600" onclick="calculatePrice()">Mega 600</option>
+          <option value="	320" onclick="calculatePrice()">Ultra 140
+          </option>
+          <option value="410" onclick="calculatePrice()">Ultra 250
+          </option>
+          <option value="	700" onclick="calculatePrice()">Ultra 600
+          </option>
+
+
+  </select>
+  <hr>
+
+  <input type="radio" name="cpe" id="service1" onclick="calculatePrice()">
+  <label for="service1">
+          CPE 5 </label>
+  <input type="radio" name="cpe" id="service2" onclick="calculatePrice()">
+  <label for="service2">CPE 10</label>
+  <input type="radio" name="cpe" id="service3" onclick="calculatePrice()">
+  <label for="service3">
+          CPE 20 </label>
+  <input type="radio" name="cpe" id="service4" onclick="calculatePrice()">
+  <label for="service4">
+          CPE 50 </label>
+
+
+  <hr>
+
+  <input type="radio" name="dis" id="discount1" onclick="calculatePrice()"> <label for="discount1"> Dis
+          25%</label>
+  <input type="radio" name="dis" id="discount2" onclick="calculatePrice()"> <label for="discount2">Dis
+          50%</label>
+  <hr>
+
+  <input type="checkbox" id="extra30" onclick="calculatePrice()"> <label for="extra30">Extra
+          20GB</label>
+  <input type="checkbox" id="extra50" onclick="calculatePrice()"> <label for="extra50">Extra
+          50GB</label>
+  <input type="checkbox" id="extra100" onclick="calculatePrice()"> <label for="extra100">Extra
+          100GB</label>
+
+  <br>
+  <input type="checkbox" id="giga400" onclick="calculatePrice()"> <label for="giga400">Giga Tank
+          400GB</label>
+  <input type="checkbox" id="giga2000" onclick="calculatePrice()"> <label for="giga2000">Giga Tank
+          2000GB</label>
+    
+  
+
+  <hr>
+  <input type="radio" id="op10" name="op" onclick="calculatePrice()">
+  <label for="op10">OP 1
+  </label>
+  <input type="radio" id="op20" name="op" onclick="calculatePrice()">
+  <label for="op20">OP
+          2</label>
+  <input type="radio" id="op30" name="op" onclick="calculatePrice()">
+  <label for="op30">OP
+          3</label>
+
+  <hr>
+
+  <input type="radio" id="add1" name="add" onclick="calculatePrice()">
+  <label for="add1">PS4 150G
+  </label>
+  <input type="radio" id="add2" name="add" onclick="calculatePrice()">
+  <label for="add2">PS4
+          300G</label>
+  <hr>
+
+  <br><br>
+
+  <input class="ino" type="text" id="balance" placeholder=" Balance" oninput="calculatePrice()" onclick="removeSpace()" value="0.00">
+  <br>
+
+  <input class="ino" type="text" id="priceWithoutTax" readonly="" placeholder="Price" value="0.00">
+
+  <input class="ino" type="text" id="priceWithTax" readonly="" placeholder="With VAT" value="0.00">
+
+</div>
+
+<div id="withoutvat" draggable="false" onmousedown="d = true" onmouseup="d = false">
+
+  <button type="button" onclick="remove()" id="Buto">Reset</button>
+
+  <br>
+  <h1 id="Hhhh"> Balance Without VAT</h1>
+  <h1 id="Poll">ضع المبلغ شامل الضريبه </h1>
+  <input type="text" id="nom1" oninput="getNum()">
+
+  <h1 id="Poll1"> المبلغ غير شامل الضريبه </h1>
+
+  <input type="text" id="nom2" readonly="">
+
 </div>
 
 <script>
@@ -528,7 +1086,142 @@ function user() {
     
         
 
-  </script>  
+  </script>
+  
+  <script>
+    var tax = 0.14;
+    function getNum() {
+            var number1 = document.getElementById("nom1").value;
+
+            document.getElementById("nom2").value = (number1 / (1 + tax)).toFixed(2);
+
+
+    }
+
+</script>
+
+<script>
+
+
+    function calculatePrice() {
+            var product = document.getElementById("products").value;
+            var services = 0;
+            var discounts = 0;
+            var Extra = 0;
+            var OptionP = 0;
+            var giga = 0;
+            var paly = 0;
+
+            if (document.getElementById("service1").checked) {
+                    services += 5;
+            }
+
+            if (document.getElementById("service2").checked) {
+                    services += 10;
+            }
+
+            if (document.getElementById("service3").checked) {
+                    services += 20;
+            }
+
+            if (document.getElementById("service4").checked) {
+                    services += 50;
+            }
+            if (document.getElementById("discount1").checked) {
+                    discounts += 0.25;
+            }
+
+            if (document.getElementById("discount2").checked) {
+                    discounts += 0.50;
+            }
+
+            if (document.getElementById("extra30").checked) {
+                    Extra += 30;
+            }
+            if (document.getElementById("extra50").checked) {
+                    Extra += 50;
+            }
+
+            if (document.getElementById("extra100").checked) {
+                    Extra += 100;
+            }
+
+            if (document.getElementById("giga400").checked) {
+                    giga += 400;
+            }
+
+            if (document.getElementById("giga2000").checked) {
+                    giga += 2000;
+            }
+
+            if (document.getElementById("op10").checked) {
+                    OptionP += 10;
+            }
+            if (document.getElementById("op20").checked) {
+                    OptionP += 50;
+            }
+
+            if (document.getElementById("op30").checked) {
+                    OptionP += 100;
+            }
+
+            if (document.getElementById("add1").checked) {
+                    paly += 75;
+            }
+
+            if (document.getElementById("add2").checked) {
+                    paly += 150;
+            }
+
+
+            var balance = parseFloat(document.getElementById("balance").value);
+
+
+            var priceWithoutTax = product * (1 - discounts) + services + OptionP + paly + Extra + giga - balance;
+
+            var priceWithTax = priceWithoutTax * 1.14;
+
+
+            document.getElementById("priceWithTax").value = priceWithTax.toFixed(2);
+            document.getElementById("priceWithoutTax").value = priceWithoutTax.toFixed(2);
+
+    }
+
+
+
+
+</script>
+
+<script>
+
+    function remove() {
+            document.getElementById("service1").checked = false;
+            document.getElementById("service2").checked = false;
+            document.getElementById("service3").checked = false;
+            document.getElementById("service4").checked = false;
+            document.getElementById("discount1").checked = false;
+            document.getElementById("discount2").checked = false;
+            document.getElementById("extra30").checked = false;
+            document.getElementById("extra50").checked = false;
+            document.getElementById("extra100").checked = false;
+            document.getElementById("giga400").checked = false;
+            document.getElementById("giga2000").checked = false;
+            document.getElementById("op10").checked = false;
+            document.getElementById("op20").checked = false;
+            document.getElementById("op30").checked = false;
+            document.getElementById("add1").checked = false;
+            document.getElementById("add2").checked = false;
+            document.getElementById("balance").value = "0.00";
+            document.getElementById("priceWithoutTax").value = "0.00";
+            document.getElementById("priceWithTax").value = "0.00";
+            document.getElementById("products").value = "0";
+            document.getElementById("nom1").value = "";
+            document.getElementById("nom2").value = "";
+
+
+    }
+</script>
+</div>
 </div>      
 </body>
 </html>
