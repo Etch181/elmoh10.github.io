@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8">
+
+<title> el MO 10</title>
+<style>
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #707070;
+  border-radius: 30px;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #941a1a;
+  border-radius: 20px;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #3e8e41;
+  border-radius: 20px;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border-top: none;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a, .dropbtn {
+  display: inline-block;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding:14px 18px;
+  text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 1px 8px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #FFFF00;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropbtn {
+  backface-visibility: hidden;
+  font-size: 12px;
+  border-style: hidden;
+  
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  padding:.2%
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  margin-left: -75px;
+  margin-top: 20px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.search-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#searchResults {
+    margin-top: 20px;
+}
+
+/* Style for the button */
+.button {
+      display: inline-block;
+      padding: 10px 10px;
+      text-align: center;
+      text-decoration: none;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #copyButton {
+      padding: 10px;
+      cursor: pointer;
+    }
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+
+
+</style>
+</head>
+<body background="c:\Users\Etch\Downloads\New folder\New folder\2.jpg">
+
+
+  <label for="landlineNumber"></label>
+  <input type="text" id="landlineNumber" oninput="updateFormattedNumber()" maxlength="10" placeholder="ADSL Number">
+
+  <br>
+
+  <label for="formattedNumber"></label>
+  <input type="text" id="formattedNumber" readonly placeholder="FBB">
+
+  <!-- Links on the website that will be updated with the formatted number -->
+  <a href="#" target="_blank"></a>
+
+  <button onclick="copyFormattedNumber()">Copy</button>
+
+  <br>
+
+  <!-- Button with Hyperlink -->
+  <a id="link5" href="https://bss.te.eg:12900/csp/pbh/business.action?BMEBusiness=srQueryAction&subsNumber=" target="_blank" class="button">Query Request</a>
+  
+
+<div class="marquee">
+  <marquee direction="stop" behavior="Stop">
+		<font color="#00FF00" size="2"><h3 align="center">Technical ** Don't Forget CPE Type ** SLA at TTS Logs ** If CST has open TTS we must mention all steps IF CST dropped before escalation ** Sales ** INF CST to use app, Ecare and 111 **</h3></font>
+	</marquee>
+
+</div>
+
+  <div class="tab">
+    <button class="tablinks" onclick="openCity(event, 'Technical')">Technical</button>
+    <button class="tablinks" onclick="openCity(event, 'Sales')">Sales</button>
+    <button class="tablinks" onclick="openCity(event, 'Installation Follow Up')">Installation Follow Up</button>
+    <button class="tablinks" onclick="openCity(event, 'Fixed Voice')">Fixed Voice</button>
+    <button class="tablinks" onclick="openCity(event, 'FTTH')">FTTH</button>
+    <button class="tablinks" onclick="openCity(event, 'CPE')">CPE</button>
+    <button class="tablinks" onclick="openCity(event, 'Tools')">Tools</button>
+  </div>
+
+<div id="Technical" class="tabcontent">
+  <div class="dropdown">
+    <button class="dropbtn">Physical Instability</button>
+    <div class="dropdown-content">
+      <p><a id="link1" href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Physical%20instability&srTypeId=074001001003003&t=1618518026163&tabId=sr0.9993911821242268&topUrl=&custid=&&BMEWebToken=null&serviceInfoChar107=1&serviceInfoChar110=2&serviceTitle=%20Physical%20Instability&serviceInfoChar282=%20Physical%20Instability&serviceInfoChar276=1&serviceInfoChar278=&serviceInfoChar272=&serviceContent=Customer%20Name:%20xxxxx,%20Line%20provisioned%20by%20Assia%20:%20yes,%20Clear%20View%20Result%20After%20Search%20:%20Technical%20dispatch%20is%20recommended,%20connection%20type%20Checked%20:%20Main%20Wire,%20Check%20if%20Line%20connected%20from%20main%20wire%20(without%20splitter%20and%20phone%20set)%20:%20Yes,%20Last%20fix%20Date%20checked%20:%20Last%20fix%20from%20more%20than%207%20days%20ago%20/%20No%20fix%20:%20Technician%20Dispatch%20Is%20Recommended,%20Faults%20Exist%20:%20Yes,%20check%20customer%20type%20:%20Not%20Migrated%20to%20BSS,%20land%20line%20bills%20from%20TE%20website%20:%20No%20bills,%20Customer%20Calling%20from%20the%20same%20ADSL%20number%20:%20No,%20Voice%20Status%20Checked%20:%20Working%20fine,%20Confirm%20that%20customer%20tested%20voice%20before%20call%20with%20phone%20set%20:%20Confirmed%20%20(informed%20CST%20Sla%201%20days)%20CPE%20type%20(%20xxx%20%20)%20(Chat%20Agent)%20&subsNumber=" target="_blank"> TT Physical instability </a></p>
+      <p><a id="link4" href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Re%20Escalation&srTypeId=102014020&t=1596998251172&tabId=sr0.9153881730926446&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&&BMEWebToken=null&serviceTitle=%20Physical%20Instability%20&serviceInfoChar282=Physical%20Instability&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=%20%20%20%20%20%20(informed%20CST%20Sla%201%20day)&subsNumber=" target="_blank"> Re Escalation</a></p>
+      <p><a id="link3" href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Follow%20Up&srTypeId=102014013&t=1585334139077&tabId=sr0.9467663745543559&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&&BMEWebToken=null&serviceTitle=%20Physical%20Instabililty%20&serviceInfoChar282=%20Physical%20Instabililty%20%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20follow%C2%A0within%20sla%20%20%20%20%20%20%20%20%20%20&subsNumber=" target="_blank"> Follow Up</a></p>
+      <p><a id="link2" href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Follow%20up%20After%20SLA&srTypeId=102014019&t=1596650184008&tabId=sr0.7804422479124686&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&&BMEWebToken=null&serviceTitle=%20Physical%20Instability&serviceInfoChar282=%20Physical%20Instability%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20Follow%20up%20After%20SLA%20%20mail%20sent%20%20recommendation%20and%20(informed%20CST%20Sla%201%20day)%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&subsNumber=" target="_blank"> Follow up After SLA</a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Follow%20Up%20after%20Re-Escalation%20-%C2%A0%20Within%20SLA&srTypeId=102014029&t=1620920926993&tabId=sr0.5044588920970444&topUrl=&custid=&&BMEWebToken=null&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=%20Physical%20Instability&serviceInfoChar282=%20Physical%20Instability&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20Follow%20Up%20after%20Re-Escalation%20Within%20SLA%20&subsNumber=" target="_blank">Follow Up after Re-Escalation -  Within SLA </a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Follow%20Up%20after%20Re-Escalation%20-%C2%A0%20After%20SLA&srTypeId=102014030&t=1620920927042&tabId=sr0.542524139714208&topUrl=&custid=&&BMEWebToken=null&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=%20Physical%20Instability&serviceInfoChar282=%20Physical%20Instability&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20Follow%20Up%20after%20Re-Escalation%20After%20SLA%20&subsNumber=" target="_blank">Follow Up after Re-Escalation -  After SLA </a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Other&srTypeId=102014018&t=1588114675678&tabId=sr0.2536052594182945&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&&BMEWebToken=null&serviceTitle=%20Physical%20Instability%20&serviceInfoChar282=%20Physical%20Instability&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=cst%20has%20Physical%20Instability%20%20&subsNumber=" target="_blank5"> Other</a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=CST%20will%20test%20the%20service&srTypeId=102014035&t=1645807787823&tabId=sr0.5181318550830932&topUrl=&custid=&&BMEWebToken=null&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Physical%20Instability&serviceInfoChar282=Physical%20Instability%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=&subsNumber=" target="_blank"> CST will test the service</a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=CST%20can%20not%20troubleshoot&srTypeId=102014034&t=1645807787790&tabId=sr0.5146923501451187&topUrl=&custid=&&BMEWebToken=null&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Physical%20Instability&serviceInfoChar282=Physical%20Instability&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=&subsNumber=" target="_blank">CST can not troubleshoot</a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Not%20beside%20CPE&srTypeId=102014025&t=1607372911332&tabId=sr0.10103335111728051&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&&BMEWebToken=&serviceTitle=%20Physical%20Instability&serviceInfoChar282=%20Physical%20Instability&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20has%20Physical%20Not%20beside%20CPE%20CST%20will%20be%20beside%20CPE%20and%20fub%20&subsNumber=" target="_blank">Not beside CPE </a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Bad%20Box&srTypeId=102014031&t=1620920927234&tabId=sr0.17797615359685148&topUrl=&custid=&&BMEWebToken=null&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=%20Physical%20Instability&serviceInfoChar282=%20Physical%20Instability&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20and%20customer%20complaint%20within%20TS%20from%20bad%20box%20issue%20&subsNumber=" target="_blank">Bad Box</a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Box%20Problem&srTypeId=102014050&t=1694153064576&tabId=sr0.3038732598689593&topUrl=&custid=&BMEWebToken=&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Box%20Problem&serviceInfoChar282=Box%20Problem%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=problem%20solved%20after%20fix%20from%20box%20&subsNumber=" target="_blank"> Box Problem </a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Will%20connect%20from%20main%20wire&srTypeId=102014003&t=1585334138464&tabId=sr0.773121303902933&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&&BMEWebToken=null&serviceTitle=%20Physical%20Instability&serviceInfoChar282=%20Physical%20Instability&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=Line%20provisioned%20by%20Assia%20:%20yes,%20Clear%20View%20Result%20After%20Search%20:%20Technical%20dispatch%20is%20recommended,%20connection%20type%20Checked%20will%20connect%20from%20main%20wire%20and%20fub&subsNumber=" target="_blank"> Will connect from main wire </a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Will%20connect%20from%20main&srTypeId=102014004&t=1615793996702&tabId=sr0.5576087854880595&topUrl=&custid=&&BMEWebToken=null&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=%20Physical%20Instability&serviceInfoChar282=%20Physical%20Instability&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20has%20%20Physical%20Instability%20%E2%80%8BWill%20connect%20from%20main%20and%20fub&subsNumber=" target="_blank">Will connect from main </a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=MV-Change%C2%A0%20wire&srTypeId=102014009&t=1613375282423&tabId=sr0.342284017751332&topUrl=&custid=&&BMEWebToken=null&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Physical%20Instability%20&serviceInfoChar282=Physical%20Instability%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20has&subsNumber=" target="_blank"> MV-Change  wire</a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Will%20Remove%20Welding&srTypeId=102014002&t=1585334138400&tabId=sr0.8774266604440603&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&&BMEWebToken=null&serviceTitle=%20Physical%20Instability&serviceInfoChar282=%20Physical%20Instability&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=Customer%20has%20No%20fix%20within%207%20days%20,%20Clear%20View%20output%20:%20Technician%20Dispatch%20Is%20Recommended%20%20,%20cst%20has%20flags%20cst%20denied%20flags%20will%20has%20Welding%20%20Will%20Remove%20Welding%20and%20fub&subsNumber=" target="_blank"> Will Remove Welding </a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Will%20Check%20Voice%20and%20FUB&srTypeId=102014026&t=1607372911370&tabId=sr0.17056615653485374&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&&BMEWebToken=&serviceTitle=%20Physical%20Instability&serviceInfoChar282=%20Physical%20Instability&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20has%20Physical%20Will%20Check%20Voice%20and%20FUB%20&subsNumber=" target="_blank">Will Check Voice and FUB </a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=TE-Billing&srTypeId=102014005&t=1588290512670&tabId=sr0.8495413170619921&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&&BMEWebToken=null&serviceTitle=%20Physical%20Instability&serviceInfoChar282=%20Physical%20Instability&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=Line%20provisioned%20by%20Assia%20:%20yes,%20Clear%20View%20Result%20After%20Search%20:%20Technical%20dispatch%20is%20recommended,%20connection%20type%20Checked%20:%20Main%20Wire,%20Check%20if%20Line%20connected%20from%20main%20wire%20(without%20splitter%20and%20phone%20set)%20:%20Yes,%20Last%20fix%20Date%20checked%20:%20Last%20fix%20from%20more%20than%207%20days%20ago%20/%20No%20fix%20:%20Technician%20Dispatch%20Is%20Recommended,%20Faults%20Exist%20:%20Yes,%20land%20line%20bills%20from%20TE%20website%20:%20Has%20bill%20more%20or%20equal%20to%2030%20EGP,%20Passed%20grace%20period%20:%20YES,%20Informed%20cst%20to%20pay%20bills%20first&subsNumber=" target="_blank"> TE-Billing</a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Major%20Fault&srTypeId=102014010&t=1587329337889&tabId=sr0.6595235949625211&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&&BMEWebToken=null&serviceTitle=%20Physical%20Instability&serviceInfoChar282=Physical%20Instability&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20has%20Major%20Fault%20informed%20CST%20script%20%20%20&subsNumber=" target="_blank"> Major Fault</a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Major%20Fault%20within%20SLA&srTypeId=102014024&t=1604338639857&tabId=sr0.8474127969040176&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&&BMEWebToken=null&serviceTitle=Physical%20Instability&serviceInfoChar282=%20Physical%20Instability&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20has%20Major%20Fault%20within%20SLA%20%20%20&subsNumber=" target="_blank">Major Fault within SLA </a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Major%20Fault%20after%20SLA&srTypeId=102014022&t=1600872983388&tabId=sr0.4597404421589829&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&&BMEWebToken=null&serviceTitle=Physical%20Instability&serviceInfoChar282=Physical%20Instability&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20has%20Major%20Fault%20after%20SLA%20%20&subsNumber=" target="_blank">Major Fault after SLA </a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Major%20Fault%20Problem%20Solved&srTypeId=102014042&t=1677023085929&tabId=sr0.5352625084586802&topUrl=&custid=&&BMEWebToken=&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Major%20Fault%20Problem%20Solved&serviceInfoChar282=Major%20Fault%20Problem%20Solved&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20has%20Physical%20Instability%20Major%20Fault%20Problem%20Solved" target="_blank">Major Fault Problem Solved</a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=CST%20refused%20troubleshooting&srTypeId=102014037&t=1646349858748&tabId=sr0.3566424041079618&topUrl=&custid=&&BMEWebToken=null&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Physical%20Instability&serviceInfoChar282=Physical%20Instability&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20has%20Physical%20CST%20refused%20troubleshooting&subsNumber=" target="_blank">CST refused troubleshooting</a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Direct%20CST%20to%20CSO&srTypeId=102014032&t=1644001370505&tabId=sr0.045759075637643365&topUrl=&custid=&&BMEWebToken=&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Physical%20Instability&serviceInfoChar282=Physical%20Instability&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20has%20physical%20instability%20Direct%20CST%20to%20CSO&subsNumber=" target="_blank">Direct CST to CSO</a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Ganzara%20Box&srTypeId=102014012&t=1587105072751&tabId=sr0.7247541138380273&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&&BMEWebToken=null&serviceTitle=%20Physical%20Instability&serviceInfoChar282=%20Physical%20Instability&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=&subsNumber=" target="_blank">Ganzara Box</a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Solved%20By%20Exchange&srTypeId=102014006&t=1587105505996&tabId=sr0.5693810132607162&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&&BMEWebToken=&serviceTitle=%20Physical%20Instability&serviceInfoChar282=%20Physical%20Instability&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=&subsNumber=" target="_blank">Solved By Exchange</a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=CPE%20Problem&srTypeId=102014014&t=1591773113623&tabId=sr0.7711355928693371&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&&BMEWebToken=&ticket=ST-146400366-5TnquAsTR0uJUbvajPj2-sso&serviceTitle=%20Physical%20Instability%20&serviceInfoChar282=%20Physical%20Instability&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=cst%20has%20Physical%20Instability%20CPE%20Problem&subsNumber=" target="_blank">CPE Problem</a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Will%20try%20with%20another%20CPE&srTypeId=102014001&t=1587105645304&tabId=sr0.4275025645400419&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&&BMEWebToken=&serviceTitle=Physical%20Instability&serviceInfoChar282=%20Physical%20Instability%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=&subsNumber=" target="_blank">Will try with another CPE</a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Internal%20Wiring&srTypeId=102014011&t=1591343834673&tabId=sr0.3358841916600175&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&&BMEWebToken=&serviceTitle=%20Physical%20Instability%20&serviceInfoChar282=%20Physical%20Instability%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20has%20Physical%20has%20problem%20in%20his%20Internal%20Wiring%20informed%20cst%20how%20to%20solve%20it&subsNumber=" target="_blank">Internal Wiring</a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Optimization%20Period&srTypeId=102014027&t=1607372911425&tabId=sr0.2635833067279252&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&&BMEWebToken=&serviceTitle=%20Physical%20Instability&serviceInfoChar282=%20Physical%20Instability&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20has%20Physical%20Optimization%20Period%20handled&subsNumber=" target="_blank">Optimization Period</a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Power%20Failure&srTypeId=102014007&t=1611337018235&tabId=sr0.13441607011768886&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&&BMEWebToken=null&serviceTitle=Physical%20Instability&serviceInfoChar282=Physical%20Instability&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20has%20%E2%80%8BPhysical%20Instability%20%E2%80%8BPower%20Failure%20&subsNumber=" target="_blank">Power Failure</a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Power%20Failure-Direct%20CST%20to%20CSO&srTypeId=102014044&t=1692941519638&tabId=sr0.4138222184356317&topUrl=&custid=&BMEWebToken=&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Power%20Failure-Direct%20CST%20to%20CSO&serviceInfoChar282=Power%20Failure-Direct%20CST%20to%20CSO&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20&subsNumber=" target="_blank">Power Failure-Direct CST to CSO</a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Engineering%20Inspection-Transfer%20To%20Exchange&srTypeId=102097001&t=1668582177208&tabId=sr0.7212594078161784&topUrl=&custid=&&BMEWebToken=&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=%E2%80%8BPhysical%20Instability&serviceInfoChar282=%E2%80%8BPhysical%20Instability&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20has%20Engineering%20Inspection%20Transfer%20To%20Exchange&subsNumber=" target="_blank">Engineering Inspection-Transfer To Exchange</a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Major%20Fault%20with%20no%20estimation&srTypeId=102086001&t=1668970962320&tabId=sr0.34607445888335264&topUrl=&custid=&&BMEWebToken=&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Major%20Fault%20with%20no%20estimation&serviceInfoChar282=Major%20Fault%20with%20no%20estimation&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20input%20Internet%20working%20fine%20but%20faced%20streaming%20issue%20related%20to%20World%20cup%20matches%20only%20inform%20CST%20this%20is%20because%20high%20load%20on%20other%20servers%20due%20to%20World%20cup%20matches&subsNumber=" target="_blank">Major Fault with no estimation</a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Dispatch%20Score%20Scenario&srTypeId=102014040&t=1674602113529&tabId=sr0.3197628710076639&topUrl=&custid=&&BMEWebToken=null&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Dispatch%20Score%20Scenario&serviceInfoChar282=Dispatch%20Score%20Scenario&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20has%20Ticket%20in%20IU%20pool%20without%20FCC%20record%20use%20force%20closed%20and%20open%20new%20TT&subsNumber=" target="_blank">Dispatch Score Scenario</a></p>
+
+
+    </div>
+  </div>
+<div class="dropdown">
+  <button class="dropbtn">Physical Contradiction</button>
+    <div class="dropdown-content">
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Physical%20Instability%20%20Contradiction&srTypeId=074001001003034&t=1602469829387&tabId=sr0.45644936344773024&topUrl=&custid=&serviceInfoChar107=1&serviceInfoChar110=2&subsNumber=FBB&BMEWebToken=null&serviceTitle=Physical%20Instability%20Contradiction&serviceInfoChar282=Physical%20Instability%20Contradiction&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=Customer%20Name:%20Mohamed%20,%20Line%20provisioned%20by%20Assia%20:%20yes,%20Clear%20View%20Result%20After%20Search%20:%20No%20DSL%20Physical%20Layer%20is%20detected%20/%20Other,%20Last%20fix%20Date%20checked%20:%20Last%20fix%20from%20more%20than%207%20days%20ago%20/%20No%20fix,%20Clear%20View%20output%20:%20No%20DSL%20Physical%20Layer%20Issue%20Is%20Detected%20customer%20input%20contradicts%20with%20ASSIA,%20over%20confirmation%20done%20with%20the%20customer%20that%20ADSL%20led%20is%20the%20one%20which%20disconnects%20when%20service%20disconnects%20not%20any%20other%20led.%20NST%20proves%20that%20customer%20disconnects%20many%20number%20of%20times%20no%20Faults%20,%20checked%20with%20another%20cpe%20voice%20up%20CPE%20%20Type%20" target="_blank">TT Contradiction </a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Re%20Escalation&srTypeId=102013007&t=1597959714482&tabId=sr0.17558146148881693&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&subsNumber=FBB&BMEWebToken=null&serviceTitle=Re%20Escalation&serviceInfoChar282=Re%20Escalation&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=" target="_blank"> Contradiction Re Escalation </a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Follow%20up%20After%20SLA&srTypeId=102013006&t=1597959714356&tabId=sr0.5027295769553194&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&subsNumber=FBB&BMEWebToken=null&serviceTitle=Follow%20up%20After%20SLA&serviceInfoChar282=Follow%20up%20After%20SLA&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=" target="_blank">Follow up After SLA</a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Follow%20Up&srTypeId=102013002&t=1597959713766&tabId=sr0.5943654531627979&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&subsNumber=FBB&BMEWebToken=null&serviceTitle=Follow%20Up&serviceInfoChar282=Follow%20Up&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20follow%20within%20sla%20%20%20%20%20%20%20%20TTS%20updated" target="_blank">Contradiction Follow Up </a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Will%20try%20with%20another%20CPE&srTypeId=102013008&t=1607373242430&tabId=sr0.46950522821994733&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&subsNumber=FBB&BMEWebToken=&serviceTitle=Will%20try%20with%20another%20CPE&serviceInfoChar282=Will%20try%20with%20another%20CPE&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=Customer%20Name:%20Mohamed%20,%20Line%20provisioned%20by%20Assia%20:%20yes,%20Clear%20View%20Result%20After%20Search%20:%20No%20DSL%20Physical%20Layer%20is%20detected%20/%20Other,%20Last%20fix%20Date%20checked%20:%20Last%20fix%20from%20more%20than%207%20days%20ago%20/%20No%20fix,%20Clear%20View%20output%20:%20No%20DSL%20Physical%20Layer%20Issue%20Is%20Detected%20customer%20input%20contradicts%20with%20ASSIA,%20over%20confirmation%20done%20with%20the%20customer%20that%20ADSL%20led%20is%20the%20one%20which%20disconnects%20when%20service%20disconnects%20not%20any%20other%20led.%20NST%20proves%20that%20customer%20disconnects%20many%20number%20of%20times%20no%20Faults%20%20Will%20try%20with%20another%20CPE%20and%20fub" target="_blank">Will try with another CPE </a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=CPE%20Problem&srTypeId=102013004&t=1597959714048&tabId=sr0.8964124149922034&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&subsNumber=FBB&BMEWebToken=null&serviceTitle=CPE%20Problem&serviceInfoChar282=CPE%20Problem&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=" target="_blank">CPE Problem </a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Check%20CPE%20at%20CSO&srTypeId=102013013&t=1624639377292&tabId=sr0.09514786507090567&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&subsNumber=FBB&BMEWebToken=null&serviceTitle=Check CPE at CSO&serviceInfoChar282=Check CPE at CSO&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=Line provisioned by Assia : yes, Clear View Result After Search : No DSL Physical Layer is detected / Other, Last fix Date checked : Last fix from more than 7 days ago / No fix, Clear View output : No DSL Physical Layer Issue Is Detected customer input contradicts with ASSIA, over confirmation done with the customer that ADSL led is the one which disconnects when service disconnects not any other led. NST proves that customer disconnects many number of times no Faults, Cst will check his cpe at CSO" target="_blank">Check CPE at CSO</a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=CST%20can%20not%20troubleshoot&srTypeId=102014034&t=1645545608959&tabId=sr0.001709007842618293&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&subsNumber=FBB&BMEWebToken=null&serviceTitle=CST can not troubleshoot&serviceInfoChar282=CST can not troubleshoot&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST can not troubleshoot" target="_blank"> CST can not troubleshoot</a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=CST%20refused%20troubleshooting&srTypeId=102013018&t=1646698066054&tabId=sr0.445717889899341&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&subsNumber=FBB&BMEWebToken=null&serviceTitle=CST refuse troubleshoot&serviceInfoChar282=CST refuse troubleshoot&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST refuse troubleshoot" target="_blank"> CST refuse troubleshoot</a></p>
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=CST%20will%20test%20the%20service&srTypeId=102013016&t=1645627354445&tabId=sr0.9136790556689465&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&subsNumber=FBB&BMEWebToken=null&serviceTitle=CST can not troubleshoot&serviceInfoChar282=CST will test the service&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST will test the service and fub " target="_blank"> CST will test the service</a></p>
+
+      <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Engineering%20Inspection-Transfer%20To%20Exchange&srTypeId=102014038&t=1668962608316&tabId=sr0.6078277991062941&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&subsNumber=FBB&BMEWebToken=null&serviceTitle=Physical instability Contradiction Engineering Inspection-Transfer To Exchange
+      &serviceInfoChar282=Physical instability Contradiction Engineering Inspection-Transfer To Exchange
+      &serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=cst%20has%20Physical%20Instability Contradiction Engineering Inspection-Transfer To Exchange
+      " target="_blank"> Engineering Inspection Transfer To Exchange</a></p>
+    </div>
+  </div>
+</div>
+  <div id="Fixed Voice" class="tabcontent">
+    <div class="dropdown">
+      <button class="dropbtn">Payment & Recharge</button>
+      <div class="dropdown-content">
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Early%20Renewal%20Done&srTypeId=206001001&t=1681819346256&tabId=sr0.14232775346644166&topUrl=&custid=&&BMEWebToken=null&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Early%20Renewal%20Done&serviceInfoChar282=Early%20Renewal%20Done%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=AFV%20CST%20ask%20make%20Early%20Renewal%20and%20Done%20&subsNumber=" title="في حاله عمل تجديد مبكر للارضي" target="_blank"> Early Renewal Done</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Early%20Renewal%20Not%20Done-Not%20Verified&srTypeId=206001002&t=1681819354304&tabId=sr0.5238033600799574&topUrl=&custid=&&BMEWebToken=null&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Early%20Renewal%20Not%20Done-Not%20Verified&serviceInfoChar282=Early%20Renewal%20Not%20Done-Not%20Verified%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=%20Cst%20Ask%20to%20make%20early%20renewal%20and%20not%20verified%20,%20informed%20cst%20process&subsNumber=" target="_blank"> Early Renewal Not Done-Not Verified</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Renwal%20Date&srTypeId=159012001&t=1681819639151&tabId=sr0.7212032216765621&topUrl=&custid=&&BMEWebToken=null&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Renewal%20Date&serviceInfoChar282=Renewal%20Date%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=informed%20cst%20his%20Renewal%20date%20&subsNumber=" title="في حاله سؤال العميل عن معاد التجديد الارضي" target="_blank"> Renwal Date</a></p>
+
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn">Billing</button>
+      <div class="dropdown-content">
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Billing%20Inquiry&srTypeId=159003040&t=1689186410365&tabId=sr0.3113856636711806&topUrl=&custid=&BMEWebToken=null&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Billing%20Inquiry&serviceInfoChar282=Billing%20Inquiry%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20ask%20about%20his%20invoice%20handled&subsNumber=" title="في حاله سؤال العميل عن قيمه الفاتورة" target="_blank"> Billing</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Payment%20Info&srTypeId=159003049&t=1689338857083&tabId=sr0.4484696116497324&topUrl=&custid=&BMEWebToken=&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Payment%20Info%20&serviceInfoChar282=Payment%20Info%20%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=cst%20ask%20about%20Payment%20Info%20handled%20&subsNumber=" title="في حاله سؤال العميل عن سداد الفواتير" target="_blank"> Payment Info</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Payment%20Info&srTypeId=159003049&t=1689338857083&tabId=sr0.4484696116497324&topUrl=&custid=&BMEWebToken=&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Payment%20Info%20&serviceInfoChar282=Payment%20Info%20%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=cst%20ask%20about%20Payment%20Info%20handled%20&subsNumber=" title="في حاله سؤال العميل عن رصيد الارضي" target="_blank"> Balance</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Billing%20Dispute&srTypeId=159003051&t=1689403043794&tabId=sr0.29162743759156173&topUrl=&custid=&BMEWebToken=&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Billing%20Dispute&serviceInfoChar282=Billing%20Dispute%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20ask%20about%20Billing%20Dispute%20handled&subsNumber=" target="_blank"> Billing Dispute</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Detailed%20Bill&srTypeId=159003048&t=1689403043832&tabId=sr0.4183652883365302&topUrl=&custid=&BMEWebToken=&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Detailed%20Bill&serviceInfoChar282=Detailed%20Bill%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20ask%20about%20Detailed%20Bill%20handled%20&subsNumber=" title="في حاله سؤال العميل عن ضريبه القيمه المضافه" target="_blank"> VAT</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Unpaid%20TE%20Bill&srTypeId=159003046&t=1689403044061&tabId=sr0.24402984990545562&topUrl=&custid=&BMEWebToken=&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Unpaid%20TE%20Bill&serviceInfoChar282=Unpaid%20TE%20Bill%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20has%20Unpaid%20TE%20Bill%20handled%20&subsNumber=" target="_blank"> Unpaid TE Bill</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Bill%20Description&srTypeId=159003027&t=1689251666078&tabId=sr0.7163010157876348&topUrl=&custid=&BMEWebToken=null&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=%20%E2%80%8BBill%20Description&serviceInfoChar282=%20%E2%80%8BBill%20Description%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20ask%20about%20%20%E2%80%8BBill%20Description%20handled%20&subsNumber=" title="في حاله سؤال العميل عن تفاصيل الفاتورة" target="_blank"> Bill Description</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Bill%20Cycle&srTypeId=159003026&t=1689251666048&tabId=sr0.5939136760512702&topUrl=&custid=&BMEWebToken=null&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=%20%E2%80%8BBill%20Cycle&serviceInfoChar282=%20%E2%80%8BBill%20Cycle%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20ask%20about%20%20%E2%80%8BBill%20Cycle%20handled%20&subsNumber=" title="في حاله سؤال العميل عن معاد الفواتير" target="_blank"> Bill Cycle</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Change%20Bill%20Cycle&srTypeId=159003050&t=1689338672382&tabId=sr0.43460426504177496&topUrl=&custid=&BMEWebToken=&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Change%20Bill%20Cycle&serviceInfoChar282=Change%20Bill%20Cycle%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=cst%20ask%20about%20Change%20Bill%20Cycle%20handled%20&subsNumber=&ticket=ST-40545757-Eb66v1ler5CzVjWNM2wv-sso" title="في حاله سؤال العميل عن تغير النظام" target="_blank"> Change Bill Cycle</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Bar%20Due%20to%20landline%20bill&srTypeId=159017001&t=1686074039863&tabId=sr0.9489116786973973&topUrl=&custid=&BMEWebToken=&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Bar%20Due%20to%20landline%20bill&serviceInfoChar282=Bar%20Due%20to%20landline%20bill%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=customer%20line%20bar%20due%20to%20landline%20bill%20&subsNumber=" target="_blank"> Bar Due to landline bill</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Suspended%20Due%20to%20landline%20bill&srTypeId=159017002&t=1686074039900&tabId=sr0.3110138636251062&topUrl=&custid=&BMEWebToken=&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Suspended%20Due%20to%20landline%20bill&serviceInfoChar282=Suspended%20Due%20to%20landline%20bill%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=customer%20line%20Suspended%20due%20to%20landline%20bill%20&subsNumber=" target="_blank"> Suspended Due to landline bill </a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Disabled%20due%20to%20landline%20bills&srTypeId=159018001&t=1686074040080&tabId=sr0.7558276491950303&topUrl=&custid=&BMEWebToken=&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Disabled%20due%20to%20landline%20bills&serviceInfoChar282=Disabled%20due%20to%20landline%20bills%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=%20&subsNumber=" target="_blank"> Disabled due to landline bills </a></p>
+
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">Suspension</button>
+      <div class="dropdown-content">
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Suspension&srTypeId=159003033&t=1689339221907&tabId=sr0.822037216808436&topUrl=&custid=&BMEWebToken=&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Suspension&serviceInfoChar282=Suspension%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20ask%20about%20Suspension%20handled%20&subsNumber=&ticket=ST-40535235-pr2niYfC41ZpRWiH3EhD-sso" title="في حاله سؤال العميل عن خدمة الايقاف المؤقت" target="_blank"> Suspension</a></p>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">Dropped & No Answer</button>
+      <div class="dropdown-content">
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=No%20answer&srTypeId=211001001&t=1686113926838&tabId=sr0.8973056873896221&topUrl=&custid=&BMEWebToken=&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=No%20answer&serviceInfoChar282=No%20answer%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=No%20answer%20&subsNumber=" target="_blank"> No answer</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Handled%20and%20Idle&srTypeId=212001001&t=1686114051891&tabId=sr0.693853572412107&topUrl=&custid=&BMEWebToken=&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Handled%20and%20Idle&serviceInfoChar282=Handled%20and%20Idle%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=Handled%20and%20Idle%20&subsNumber=" target="_blank"> Handled and Idle</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Handled%20and%20Dropped&srTypeId=212001002&t=1686114051932&tabId=sr0.08169426663615065&topUrl=&custid=&BMEWebToken=&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Handled%20and%20Dropped&serviceInfoChar282=Handled%20and%20Dropped%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=Handled%20and%20Dropped%20&subsNumber=" target="_blank"> Handled and Dropped</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Idle%20or%20Dropped%20Before%20transfer&srTypeId=212001003&t=1686114051999&tabId=sr0.017869983241761367&topUrl=&custid=&BMEWebToken=&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Idle%20or%20Dropped%20Before%20transfer&serviceInfoChar282=Idle%20or%20Dropped%20Before%20transfer%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=Idle%20or%20Dropped%20Before%20transfer%20&subsNumber=" target="_blank"> Idle or Dropped Before transfer</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Idle%20or%20Dropped%20Trouble%20shooting&srTypeId=212001004&t=1686114052144&tabId=sr0.7332361404780009&topUrl=&custid=&BMEWebToken=&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Idle%20or%20Dropped%20Trouble%20shooting&serviceInfoChar282=Idle%20or%20Dropped%20Trouble%20shooting%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=Idle%20or%20Dropped%20Trouble%20shooting%20&subsNumber=" target="_blank"> Idle or Dropped Trouble shooting</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Idle%20or%20Dropped%20within%20chatting&srTypeId=212001005&t=1686114052214&tabId=sr0.9963817437226605&topUrl=&custid=&BMEWebToken=&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Idle%20or%20Dropped%20within%20chatting&serviceInfoChar282=Idle%20or%20Dropped%20within%20chatting%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=Idle%20or%20Dropped%20within%20chatting%20&subsNumber=" target="_blank"> Idle or Dropped within chatting</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Unclear%20inquiry%20Idle%20or%20Dropped&srTypeId=212001006&t=1686114052493&tabId=sr0.7015654011839256&topUrl=&custid=&BMEWebToken=&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Unclear%20inquiry%20Idle%20or%20Dropped&serviceInfoChar282=Unclear%20inquiry%20Idle%20or%20Dropped%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=Unclear%20inquiry%20Idle%20or%20Dropped%20&subsNumber=" target="_blank"> Unclear inquiry Idle or Dropped</a></p>
+
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">Salefny & Resume 24H</button>
+      <div class="dropdown-content">
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Salfny&srTypeId=159015029&t=1688751852034&tabId=sr0.8688059256110477&topUrl=&custid=&BMEWebToken=&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Salfny&serviceInfoChar282=Salfny%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=customer%20asked%20about%20the%20service%20handled%20&subsNumber=" target="_blank">Inquiry Salfny</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Salfny&srTypeId=206003029&t=1688751852089&tabId=sr0.48827460501015385&topUrl=&custid=&BMEWebToken=&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Salfny&serviceInfoChar282=Salfny%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=AFV%20cst%20ask%20add%20Salfny%20and%20done%20&subsNumber=" target="_blank"> Request Salefny</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Resume%2024&srTypeId=159015030&t=1688752137962&tabId=sr0.28139080785754333&topUrl=&custid=&BMEWebToken=&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Resume%2024&serviceInfoChar282=Resume%2024%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=%20%20%20&subsNumber=" target="_blank"> Inquiry Resume 24</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Resume%2024&srTypeId=206003030&t=1688752138000&tabId=sr0.022606054325643665&topUrl=&custid=&BMEWebToken=&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Resume%2024%20&serviceInfoChar282=Resume%2024%20%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=%20%20%20%20&subsNumber=" target="_blank"> Request Resume 24H</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Action%20Done&srTypeId=159025001&t=1697400034383&tabId=sr0.38121633893522966&topUrl=&custid=&BMEWebToken=&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Resume%2024%20Action%20Done&serviceInfoChar282=Resume%2024%20Action%20Done%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=AFV%20CST%20ask%20Resume%2024%20Action%20Done&subsNumber=" target="_blank">Resume 24H Action Done</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Resume%2024%20After%20Adjust&srTypeId=206003058&t=1699235964970&tabId=sr0.4600705441880306&topUrl=&custid=&BMEWebToken=null&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Resume%2024%20After%20Adjust&serviceInfoChar282=Resume%2024%20After%20Adjust&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=Resume%2024%20After%20Adjust%20&subsNumber=" target="_blank"> Resume 24 After Adjust</a></p>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">Electronic Bill</button>
+      <div class="dropdown-content">
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Electronic%20Bill&srTypeId=159014003&t=1697606087501&tabId=sr0.8029494518986233&topUrl=&custid=&BMEWebToken=null&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Electronic%20Bill&serviceInfoChar282=Electronic%20Bill%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=Inf%20CST%20about%20Electronic%20Bill&subsNumber=" title="في حاله سؤال العميل عن اصدار فاتورة الكترونيه" target="_blank"> Electronic Bill</a></p>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">Payment Methods</button>
+      <div class="dropdown-content">
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Aman&srTypeId=159005001&t=1699518549152&tabId=sr0.1418025048399767&topUrl=&custid=&BMEWebToken=null&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Aman&serviceInfoChar282=Aman&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=Inf%20CST%20about%20payment%20method%20Aman&subsNumber=" target="_blank">Aman</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Fawry&srTypeId=159005006&t=1699518549197&tabId=sr0.823429167618964&topUrl=&custid=&BMEWebToken=null&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Fawry&serviceInfoChar282=Fawry&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=Inf%20CST%20about%20payment%20method%20Fawry%20&subsNumber=" target="_blank"> Fawry</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Bee&srTypeId=159005004&t=1699518549176&tabId=sr0.12770884774740865&topUrl=&custid=&BMEWebToken=null&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Bee&serviceInfoChar282=Bee&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=Inf%20CST%20about%20payment%20method%20Bee%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&subsNumber=" target="_blank"> Bee</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Masary&srTypeId=159005007&t=1699518549219&tabId=sr0.4128746519847497&topUrl=&custid=&BMEWebToken=null&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Masary&serviceInfoChar282=Masary&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=Inf%20CST%20about%20payment%20method%20Masary&subsNumber=" target="_blank"> Masary</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Momken&srTypeId=159005008&t=1699518549240&tabId=sr0.17025715900628802&topUrl=&custid=&BMEWebToken=null&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Momken&serviceInfoChar282=Momken&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=Inf%20CST%20about%20payment%20method%20Momken%20&subsNumber=" target="_blank">Momken</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Sadad&srTypeId=159005010&t=1699518549262&tabId=sr0.04884485092571511&topUrl=&custid=&BMEWebToken=null&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Sadad&serviceInfoChar282=Sadad&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=Inf%20CST%20about%20payment%20method%20Sadad%20&subsNumber=" target="_blank"> Sadad</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Bank%20Check&srTypeId=159005003&t=1699518549160&tabId=sr0.44828163013835853&topUrl=&custid=&BMEWebToken=null&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=Bank%20Check&serviceInfoChar282=Bank%20Check&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=Inf%20CST%20about%20payment%20method%20Bank%20Check%20&subsNumber=" target="_blank"> Bank Check</a></p>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">Payment Not Clear</button>
+      <div class="dropdown-content">
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Aggregators%20Payment%20Not%20Clear&srTypeId=153005001&t=1697671712078&tabId=sr0.95463888993758&topUrl=&custid=&BMEWebToken=null&serviceInfoChar107=3&serviceInfoChar112=2&serviceTitle=Aggregators%20Payment%20Not%20Clear&serviceInfoChar282=Aggregators%20Payment%20Not%20Clear%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20paid%20through%20Electronic%20machine%20The%20Company%20name%20(%20%20%20%20%20%20%20)%20The%20service%20on%20the%20receipt%20(%20%20%20%20%20%20%20)%20Payment%20Date%20(%20%20%20%20%20%20%20)%20Total%20amount%20(%20%20%20%20%20%20%20)%20reference%20number%20(%20%20%20%20%20%20%20)%20device%20number%20(%20%20%20%20%20%20%20)&subsNumber=" target="_blank">Aggregators Payment Not Clear</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Online%20Payment%20Not%20Clear&srTypeId=153005002&t=1697671712088&tabId=sr0.6918703603344156&topUrl=&custid=&BMEWebToken=null&serviceInfoChar107=3&serviceInfoChar112=2&serviceTitle=Online%20Payment%20Not%20Clear&serviceInfoChar282=Online%20Payment%20Not%20Clear%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=Transaction%20full%20amount%20(%20Specify%20it`s%20one%20transaction%20or%20more%20)%20Payment%20method:-%20(%20%20WE%20app%20or%20E-care%20)%20Transaction%20number%20(%20if%20it%20available%20)%20&subsNumber=" target="_blank">Online Payment Not Clear</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Visa%20Payment&srTypeId=153005003&t=1697671712111&tabId=sr0.5321480991690752&topUrl=&custid=&BMEWebToken=null&serviceInfoChar107=3&serviceInfoChar112=2&serviceTitle=Visa%20Payment&serviceInfoChar282=Visa%20Payment%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=Visa%20Payment%20&subsNumber=" target="_blank">Visa Payment</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Within%20SLA&srTypeId=157002001&t=1697671792719&tabId=sr0.6996798810944855&topUrl=&custid=&BMEWebToken=null&serviceInfoChar107=3&serviceInfoChar112=2&serviceTitle=TT%20Status%20Follow%20Up%20Within%20SLA&serviceInfoChar282=TT%20Status%20Follow%20Up%20Within%20SLA%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=TT%20Status%20Follow%20Up%20Within%20SLA%20&subsNumber=" target="_blank">TT Status Follow Up</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Violated%20SLA&srTypeId=157002002&t=1697671792728&tabId=sr0.03376583321432247&topUrl=&custid=&BMEWebToken=null&serviceInfoChar107=3&serviceInfoChar112=2&serviceTitle=TT%20Status%20Follow%20Up%20Violated%20SLA&serviceInfoChar282=TT%20Status%20Follow%20Up%20Violated%20SLA%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=TT%20Status%20Follow%20Up%20Violated%20SLA%20&subsNumber=" target="_blank">Violated SLA</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Handled&srTypeId=157002003&t=1697671792753&tabId=sr0.7685801384417341&topUrl=&custid=&BMEWebToken=null&serviceInfoChar107=3&serviceInfoChar112=2&serviceTitle=TT%20Status%20Follow%20Up%20Handled&serviceInfoChar282=TT%20Status%20Follow%20Up%20Handled%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=TT%20Status%20Follow%20Up%20Handled&subsNumber=" target="_blank">TT Status Follow Up Handled</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Rejected&srTypeId=157002004&t=1697671792787&tabId=sr0.8859669187433357&topUrl=&custid=&BMEWebToken=null&serviceInfoChar107=3&serviceInfoChar112=2&serviceTitle=TT%20Status%20Follow%20Up%20Rejected&serviceInfoChar282=TT%20Status%20Follow%20Up%20Rejected%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=TT%20Status%20Follow%20Up%20Rejected%20&subsNumber=" target="_blank">TT Status Follow Up Rejected</a></p>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">We App</button>
+      <div class="dropdown-content">
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=We%20App&srTypeId=159020001&t=1691393377659&tabId=sr0.020807514139693506&topUrl=&custid=&BMEWebToken=&serviceInfoChar107=2&serviceInfoChar111=1&serviceTitle=We%20App&serviceInfoChar282=We%20App%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20ask%20about%20we%20app%20handled%20&subsNumber=&ticket=ST-40659592-BsMsoAcKMfuImwLcCa6c-sso" target="_blank">We App inquiry</a></p>
+        <p><a href="https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=WE%20App%20Problem&srTypeId=153006003&t=1697604791167&tabId=sr0.06713655569610655&topUrl=&custid=&BMEWebToken=null&serviceInfoChar107=3&serviceInfoChar112=2&serviceTitle=WE%20App%20Problem&serviceInfoChar282=WE%20App%20Problem%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20ahs%20WE%20App%20Problem%20&subsNumber=" target="_blank">WE App Problem</a></p>
+      </div>
+    </div>
+    
+    
+    </div>
+  </div> 
+</div>
+
+<div id="Tools" class="tabcontent">
+  <font color="#00FF00" size="5"><h3 align="left">ASSIA Tools</h3></font>
+
+  <font color="#00FF00" size="4" align="left">UserName:</font>
+  <input type="type" value="Premium_FTTH" id="User" readonly ><br><br>
+
+  <font color="#00FF00" size="4" align="left">Password:</font> 
+  <input type="password" value="We@data123" id="myInput" readonly><br><br>
+
+  <button onclick="user()" id="copyButton">Copy User</button>
+  <button onclick="copyText()" id="copyButton">Copy Pass</button>
+  
+  <font color="#00FF00" size="3">Show Password</font>
+  <input type="checkbox" onclick="myFunction()">
+</div>
+
+<script>
+  function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+
+  function updateFormattedNumber() {
+            var landlineInput = document.getElementById("landlineNumber");
+            var formattedInput = document.getElementById("formattedNumber");
+            var link1 = document.getElementById("link1");
+            var link2 = document.getElementById("link2");
+            var link3 = document.getElementById("link3");
+            var link4 = document.getElementById("link4");
+            var link5 = document.getElementById("link5");
+
+            var landlineValue = landlineInput.value.replace(/\D/g, ''); // Remove non-numeric characters
+
+            // Check if the first digit is 0 and remove it
+            if (landlineValue.length > 0 && landlineValue[0] === '0') {
+                landlineValue = landlineValue.slice(1);
+            }
+
+            // Update the formatted input
+            formattedInput.value = "FBB" + landlineValue;
+
+            // Update the links on the website
+            link1.href = "https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Physical%20instability&srTypeId=074001001003003&t=1618518026163&tabId=sr0.9993911821242268&topUrl=&custid=&&BMEWebToken=null&serviceInfoChar107=1&serviceInfoChar110=2&serviceTitle=%20Physical%20Instability&serviceInfoChar282=%20Physical%20Instability&serviceInfoChar276=1&serviceInfoChar278=&serviceInfoChar272=&serviceContent=Customer%20Name:%20xxxxx,%20Line%20provisioned%20by%20Assia%20:%20yes,%20Clear%20View%20Result%20After%20Search%20:%20Technical%20dispatch%20is%20recommended,%20connection%20type%20Checked%20:%20Main%20Wire,%20Check%20if%20Line%20connected%20from%20main%20wire%20(without%20splitter%20and%20phone%20set)%20:%20Yes,%20Last%20fix%20Date%20checked%20:%20Last%20fix%20from%20more%20than%207%20days%20ago%20/%20No%20fix%20:%20Technician%20Dispatch%20Is%20Recommended,%20Faults%20Exist%20:%20Yes,%20check%20customer%20type%20:%20Not%20Migrated%20to%20BSS,%20land%20line%20bills%20from%20TE%20website%20:%20No%20bills,%20Customer%20Calling%20from%20the%20same%20ADSL%20number%20:%20No,%20Voice%20Status%20Checked%20:%20Working%20fine,%20Confirm%20that%20customer%20tested%20voice%20before%20call%20with%20phone%20set%20:%20Confirmed%20%20(informed%20CST%20Sla%201%20days)%20CPE%20type%20(%20xxx%20%20)%20(Chat%20Agent)%20&subsNumber=" + formattedInput.value;
+            link2.href = "https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Follow%20up%20After%20SLA&srTypeId=102014019&t=1596650184008&tabId=sr0.7804422479124686&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&&BMEWebToken=null&serviceTitle=%20Physical%20Instability&serviceInfoChar282=%20Physical%20Instability%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20Follow%20up%20After%20SLA%20%20mail%20sent%20%20recommendation%20and%20(informed%20CST%20Sla%201%20day)%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&subsNumber=" + formattedInput.value;
+            link3.href = "https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Follow%20Up&srTypeId=102014013&t=1585334139077&tabId=sr0.9467663745543559&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&&BMEWebToken=null&serviceTitle=%20Physical%20Instabililty%20&serviceInfoChar282=%20Physical%20Instabililty%20%20&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=CST%20follow%C2%A0within%20sla%20%20%20%20%20%20%20%20%20%20&subsNumber=" + formattedInput.value;
+            link4.href = "https://bss.te.eg:12900/csp/sr/business.action?BMEBusiness=srNewSrPage&srTypeName=Re%20Escalation&srTypeId=102014020&t=1596998251172&tabId=sr0.9153881730926446&topUrl=&custid=&serviceInfoChar107=2&serviceInfoChar111=1&&BMEWebToken=null&serviceTitle=%20Physical%20Instability%20&serviceInfoChar282=Physical%20Instability&serviceInfoChar276=1&serviceInfoChar278=1&serviceInfoChar272=0&serviceContent=%20%20%20%20%20%20(informed%20CST%20Sla%201%20day)&subsNumber=" + formattedInput.value;
+            link5.href = "https://bss.te.eg:12900/csp/pbh/business.action?BMEBusiness=srQueryAction&subsNumber=" + formattedInput.value;
+
+        }
+
+        function copyFormattedNumber() {
+            var formattedInput = document.getElementById("formattedNumber");
+
+            if (formattedInput.value) {
+                formattedInput.select();
+                document.execCommand("copy");
+                alert("تم نسخ الرقم بنجاح😍");
+            } else {
+                alert("Please enter a valid landline number.");
+            }
+        }
+
+        document.addEventListener('contextmenu', function (e) {
+      e.preventDefault();
+    });
+
+    function myFunction() {
+  var x = document.getElementById("myInput");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+
+function user() {
+      /* Get the text field */
+      var user = document.getElementById("User");
+
+      /* Select the text field */
+      user.select();
+      user.setSelectionRange(0, 99999); /* For mobile devices */
+
+      /* Copy the text inside the text field */
+      document.execCommand("copy");
+
+      /* Alert the copied text */
+      alert("Copied: " + user.value);
+    }
+    
+    function copyText() {
+      /* Get the text field */
+      var copyText = document.getElementById("myInput");
+
+      /* Select the text field */
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+      /* Copy the text inside the text field */
+      document.execCommand("copy");
+
+      /* Alert the copied text */
+      alert("Copied: " + copyText.value);
+    }
+    
+        
+
+  </script>  
+</div>      
+</body>
+</html>
